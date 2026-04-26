@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Artispreneur Academy — Free Music Business Courses</title>
+<meta name="description" content="Free step-by-step video courses for independent artists. Brand yourself, copyright your music, distribute, file taxes, and build a real music business.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,800;1,400&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ── ARTISPRENEUR DESIGN TOKENS ── */
+:root {
+  --color-red: #C0272D;
+  --color-red-hover: #A12024;
+  --color-gold: #F5C100;
+  --color-gold-hover: #D9AB00;
+  --color-white: #FFFFFF;
+  --color-charcoal: #1A1A1A;
+  --color-warm-gray: #4A4A4A;
+  --color-parchment: #F9F6EF;
+  --color-gold-tint: #FFF8D6;
+  --color-success: #16A34A;
+  --color-warning: #D97706;
+  --color-error: #C0272D;
+  --color-info: #2563EB;
+
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', 'Lato', Arial, sans-serif;
+
+  --text-display: 3rem;
+  --text-h1: 2.25rem;
+  --text-h2: 1.75rem;
+  --text-h3: 1.375rem;
+  --text-body: 1rem;
+  --text-sm: 0.875rem;
+  --text-xs: 0.75rem;
+
+  --space-2: 0.5rem;
+  --space-4: 1rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+  --space-24: 6rem;
+
+  --max-width: 1200px;
+  --max-content: 760px;
+  --nav-height: 72px;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 16px;
+  --radius-full: 9999px;
+
+  --shadow-sm: 0 2px 6px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+  --shadow-gold: 0 4px 16px rgba(245,193,0,0.25);
+  --shadow-red: 0 4px 16px rgba(192,39,45,0.25);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);color:var(--color-charcoal);background:var(--color-white);line-height:1.6;-webkit-font-smoothing:antialiased}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,0,0,0.06);height:var(--nav-height)}
+nav .inner{max-width:var(--max-width);margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 var(--space-6);height:100%}
+nav .logo{font-family:var(--font-heading);font-weight:800;font-size:1.25rem;color:var(--color-charcoal);letter-spacing:-.02em}
+nav .logo span{color:var(--color-red)}
+nav .logo em{font-style:normal;color:var(--color-gold)}
+nav .links{display:flex;gap:var(--space-6);align-items:center}
+nav .links a{color:var(--color-warm-gray);text-decoration:none;font-size:var(--text-sm);font-weight:500;transition:color .2s}
+nav .links a:hover{color:var(--color-charcoal)}
+.nav-cta{background:var(--color-red);color:var(--color-white)!important;padding:10px 22px;border-radius:var(--radius-md);font-weight:600!important;font-size:var(--text-xs)!important;letter-spacing:.03em;text-transform:uppercase}
+.nav-cta:hover{background:var(--color-red-hover)!important;color:var(--color-white)!important}
+
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;gap:var(--space-2);padding:14px 28px;border-radius:var(--radius-md);font-family:var(--font-body);font-weight:600;font-size:15px;text-decoration:none;transition:all .2s;cursor:pointer;border:none;line-height:1}
+.btn--primary{background:var(--color-red);color:var(--color-white)}
+.btn--primary:hover{background:var(--color-red-hover);transform:translateY(-1px);box-shadow:var(--shadow-red)}
+.btn--secondary{background:transparent;color:var(--color-charcoal);border:2px solid rgba(0,0,0,0.12)}
+.btn--secondary:hover{border-color:var(--color-charcoal);transform:translateY(-1px)}
+.btn--gold{background:var(--color-gold);color:var(--color-charcoal)}
+.btn--gold:hover{background:var(--color-gold-hover);transform:translateY(-1px);box-shadow:var(--shadow-gold)}
+.btn--lg{padding:16px 36px;font-size:17px}
+.btn--pill{border-radius:var(--radius-full)}
+.btn--xs{padding:8px 16px;font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.05em}
+
+/* ── HERO ── */
+.hero{background:var(--color-charcoal);padding:calc(var(--nav-height) + var(--space-20)) var(--space-6) var(--space-20);text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at 30% 50%, rgba(192,39,45,0.08) 0%, transparent 60%),radial-gradient(circle at 70% 30%, rgba(245,193,0,0.06) 0%, transparent 50%);pointer-events:none}
+.hero .inner{max-width:var(--max-content);margin:0 auto;position:relative}
+.hero .eyebrow{font-family:var(--font-body);font-size:var(--text-xs);font-weight:600;color:var(--color-gold);text-transform:uppercase;letter-spacing:.12em;margin-bottom:var(--space-6)}
+.hero h1{font-family:var(--font-heading);font-weight:800;font-size:clamp(2.2rem,5.5vw,var(--text-display));color:var(--color-white);letter-spacing:-.02em;line-height:1.1;margin-bottom:var(--space-4)}
+.hero h1 span{color:var(--color-red)}
+.hero p{font-size:clamp(1rem,2vw,1.2rem);color:rgba(255,255,255,0.7);max-width:600px;margin:0 auto var(--space-8);line-height:1.7}
+.hero .ctas{display:flex;gap:var(--space-4);justify-content:center;flex-wrap:wrap}
+
+/* ── SECTIONS ── */
+section{padding:var(--space-20) var(--space-6)}
+section .inner{max-width:var(--max-width);margin:0 auto}
+.section--parchment{background:var(--color-parchment)}
+.section--dark{background:var(--color-charcoal);color:var(--color-white)}
+.eyebrow{font-family:var(--font-body);font-size:var(--text-xs);font-weight:600;color:var(--color-red);text-transform:uppercase;letter-spacing:.1em;margin-bottom:var(--space-4)}
+.section-title{font-family:var(--font-heading);font-weight:700;font-size:clamp(1.6rem,3.5vw,var(--text-h1));color:var(--color-charcoal);margin-bottom:var(--space-4);letter-spacing:-.01em;line-height:1.2}
+.section--dark .section-title{color:var(--color-white)}
+.section-sub{color:var(--color-warm-gray);font-size:1.05rem;max-width:var(--max-content);margin-bottom:var(--space-12);line-height:1.7}
+.section--dark .section-sub{color:rgba(255,255,255,0.6)}
+
+/* ── PROBLEMS ── */
+.problems-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--space-6)}
+.prob-card{background:var(--color-white);border:1px solid rgba(0,0,0,0.06);border-radius:var(--radius-lg);padding:var(--space-8);transition:border-color .2s,box-shadow .2s}
+.prob-card:hover{border-color:var(--color-red);box-shadow:var(--shadow-md)}
+.prob-card .num{font-family:var(--font-heading);font-size:2rem;font-weight:800;color:var(--color-red);margin-bottom:var(--space-4);line-height:1}
+.prob-card h3{font-family:var(--font-body);font-weight:700;font-size:var(--text-h3);color:var(--color-charcoal);margin-bottom:var(--space-2)}
+.prob-card p{font-size:var(--text-sm);color:var(--color-warm-gray);line-height:1.6}
+
+/* ── STATS ── */
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:var(--space-6);margin-bottom:var(--space-12)}
+.stat-card{background:var(--color-white);border:1px solid rgba(0,0,0,0.06);border-radius:var(--radius-lg);padding:var(--space-6);text-align:center;transition:box-shadow .2s}
+.stat-card:hover{box-shadow:var(--shadow-md)}
+.stat-card .num{font-family:var(--font-heading);font-size:2rem;font-weight:800;color:var(--color-red);line-height:1.2}
+.stat-card .label{font-size:var(--text-sm);color:var(--color-warm-gray);margin-top:var(--space-1)}
+
+/* ── COURSES ── */
+.course-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:var(--space-6)}
+.course-card{background:var(--color-white);border:1px solid rgba(0,0,0,0.06);border-radius:var(--radius-lg);overflow:hidden;transition:box-shadow .2s}
+.course-card:hover{box-shadow:var(--shadow-md)}
+.course-card-header{padding:var(--space-6);cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:var(--space-4)}
+.course-card-header h3{font-family:var(--font-body);font-weight:600;font-size:1rem;color:var(--color-charcoal);flex:1;line-height:1.3}
+.course-card-header .mod-count{font-size:var(--text-xs);color:var(--color-warm-gray);font-weight:500;white-space:nowrap;background:var(--color-parchment);padding:4px 12px;border-radius:var(--radius-full)}
+.course-card-header .arrow{color:var(--color-red);font-size:12px;transition:transform .3s;flex-shrink:0}
+.course-card.open .course-card-header .arrow{transform:rotate(180deg)}
+.course-body{max-height:0;overflow:hidden;transition:max-height .4s ease;border-top:0px solid transparent}
+.course-card.open .course-body{max-height:2000px;border-top:1px solid rgba(0,0,0,0.06)}
+.module-list{padding:var(--space-4) var(--space-6) var(--space-6);display:flex;flex-direction:column;gap:var(--space-2)}
+.module-item{display:flex;align-items:center;gap:var(--space-4);padding:12px 14px;background:var(--color-parchment);border-radius:var(--radius-md);text-decoration:none;color:var(--color-charcoal);transition:background .2s;font-size:var(--text-sm)}
+.module-item:hover{background:var(--color-gold-tint)}
+.module-item .mod-num{font-size:var(--text-xs);font-weight:700;color:var(--color-red);font-family:var(--font-body);min-width:24px;text-align:right}
+.module-item .mod-title{flex:1;color:var(--color-warm-gray)}
+.module-item .play{color:var(--color-red);font-size:12px;width:28px;height:28px;display:flex;align-items:center;justify-content:center;background:var(--color-white);border-radius:50%;transition:background .2s}
+.module-item:hover .play{background:var(--color-red);color:var(--color-white)}
+
+/* ── PRICING ── */
+.pricing-card{background:var(--color-white);border:2px solid var(--color-gold);border-radius:var(--radius-xl);padding:var(--space-12) var(--space-8);text-align:center;max-width:500px;margin:0 auto;position:relative;box-shadow:var(--shadow-gold)}
+.pricing-card .badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--color-gold);color:var(--color-charcoal);font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.08em;padding:6px 20px;border-radius:var(--radius-full)}
+.pricing-card .price{font-family:var(--font-heading);font-size:3.5rem;font-weight:800;letter-spacing:-.03em;margin:var(--space-4) 0 var(--space-2);color:var(--color-charcoal)}
+.pricing-card .price span{font-family:var(--font-body);font-size:1.1rem;color:var(--color-warm-gray);font-weight:400}
+.pricing-card .desc{color:var(--color-warm-gray);margin-bottom:var(--space-8);font-size:var(--text-sm)}
+.pricing-card .features{list-style:none;text-align:left;margin:0 auto var(--space-8);max-width:320px}
+.pricing-card .features li{padding:var(--space-2) 0;font-size:var(--text-sm);color:var(--color-warm-gray);display:flex;align-items:center;gap:var(--space-3)}
+.pricing-card .features li::before{content:"✓";color:var(--color-red);font-weight:700;font-size:1rem}
+
+/* ── FAQ ── */
+.faq-list{max-width:var(--max-content);margin:0 auto}
+.faq-item{border-bottom:1px solid rgba(0,0,0,0.08);padding:var(--space-6) 0}
+.faq-q{display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-weight:600;font-size:1rem;color:var(--color-charcoal);gap:var(--space-4)}
+.faq-q .arrow{color:var(--color-red);font-size:12px;transition:transform .3s;flex-shrink:0}
+.faq-item.open .faq-q .arrow{transform:rotate(180deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease, padding .3s ease;color:var(--color-warm-gray);font-size:var(--text-sm);line-height:1.8}
+.faq-item.open .faq-a{max-height:400px;padding-top:var(--space-4)}
+
+/* ── CTA BANNER ── */
+.cta-banner{background:linear-gradient(135deg, var(--color-red), #8B1A1E);padding:var(--space-20) var(--space-6);text-align:center;position:relative;overflow:hidden}
+.cta-banner::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;background:radial-gradient(circle at 50% 50%, rgba(245,193,0,0.1) 0%, transparent 50%);pointer-events:none}
+.cta-banner .inner{max-width:var(--max-content);margin:0 auto;position:relative}
+.cta-banner h2{font-family:var(--font-heading);font-size:clamp(1.6rem,3vw,2.25rem);font-weight:700;color:var(--color-white);margin-bottom:var(--space-4);letter-spacing:-.01em}
+.cta-banner p{color:rgba(255,255,255,0.75);margin-bottom:var(--space-8);font-size:1.05rem}
+.cta-banner .btn--gold{font-size:17px;padding:16px 36px}
+
+/* ── FOOTER ── */
+footer{background:var(--color-charcoal);color:rgba(255,255,255,0.5);padding:var(--space-16) var(--space-6) var(--space-8)}
+footer .inner{max-width:var(--max-width);margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:var(--space-12)}
+@media(max-width:768px){footer .inner{grid-template-columns:1fr 1fr;gap:var(--space-8)}}
+@media(max-width:480px){footer .inner{grid-template-columns:1fr}}
+footer .brand .logo{font-family:var(--font-heading);font-weight:800;font-size:1.25rem;color:var(--color-white);margin-bottom:var(--space-4);display:block}
+footer .brand .logo span{color:var(--color-red)}
+footer .brand .logo em{font-style:normal;color:var(--color-gold)}
+footer .brand p{font-size:var(--text-sm);line-height:1.7;max-width:280px}
+footer .brand .tagline{font-family:var(--font-heading);font-style:italic;color:var(--color-gold);font-size:var(--text-sm);margin-top:var(--space-4)}
+footer .col h4{color:var(--color-white);font-size:var(--text-xs);font-weight:600;text-transform:uppercase;letter-spacing:.08em;margin-bottom:var(--space-4)}
+footer .col a{display:block;color:rgba(255,255,255,0.5);text-decoration:none;font-size:var(--text-sm);padding:4px 0;transition:color .2s}
+footer .col a:hover{color:var(--color-white)}
+footer .bottom{border-top:1px solid rgba(255,255,255,0.08);margin-top:var(--space-12);padding-top:var(--space-8);text-align:center;font-size:var(--text-xs);max-width:var(--max-width);margin-left:auto;margin-right:auto}
+
+/* ── MODAL ── */
+.modal-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.85);z-index:200;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .3s;padding:var(--space-6)}
+.modal-overlay.show{opacity:1;pointer-events:all}
+.modal-content{background:var(--color-white);border-radius:var(--radius-lg);width:100%;max-width:800px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.3)}
+.modal-header{display:flex;align-items:center;justify-content:space-between;padding:var(--space-6);border-bottom:1px solid rgba(0,0,0,0.06)}
+.modal-header h4{font-size:var(--text-sm);font-weight:600;color:var(--color-charcoal)}
+.modal-close{background:none;border:none;color:var(--color-warm-gray);font-size:1.5rem;cursor:pointer;padding:0 4px;line-height:1;transition:color .2s}
+.modal-close:hover{color:var(--color-charcoal)}
+.modal-body{aspect-ratio:16/9;background:#000}
+.modal-body iframe{width:100%;height:100%;border:none}
+
+/* ── RESPONSIVE ── */
+@media(max-width:640px){
+  nav .links a:not(.nav-cta){display:none}
+  .hero h1{font-size:2rem}
+  .course-grid{grid-template-columns:1fr}
+  section{padding:var(--space-12) var(--space-4)}
+  .btn--lg{padding:14px 28px;font-size:15px}
+}
+
+/* ── ALERT ── */
+.alert{background:var(--color-gold-tint);border-left:4px solid var(--color-gold);border-radius:var(--radius-md);padding:var(--space-4) var(--space-6);font-size:var(--text-sm);color:var(--color-warm-gray);margin-bottom:var(--space-6);display:flex;align-items:center;gap:var(--space-3)}
+.alert strong{color:var(--color-charcoal);font-weight:600}
+
+/* ── TESTIMONIALS ── */
+.testimonials-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:var(--space-6);margin-top:var(--space-8)}
+.t-card{background:var(--color-white);border:1px solid rgba(0,0,0,0.06);border-radius:var(--radius-lg);padding:var(--space-8);transition:box-shadow .2s}
+.t-card:hover{box-shadow:var(--shadow-md)}
+.t-card .stars{color:var(--color-gold);font-size:14px;letter-spacing:2px;margin-bottom:var(--space-4)}
+.t-card blockquote{font-size:var(--text-sm);color:var(--color-warm-gray);line-height:1.8;font-style:italic;margin-bottom:var(--space-6)}
+.t-card .author{display:flex;align-items:center;gap:var(--space-4)}
+.t-card .author .avatar{width:44px;height:44px;border-radius:50%;background:var(--color-parchment);display:flex;align-items:center;justify-content:center;font-family:var(--font-heading);font-weight:700;font-size:1.1rem;color:var(--color-red)}
+.t-card .author .name{font-weight:600;font-size:var(--text-sm);color:var(--color-charcoal)}
+.t-card .author .role{font-size:var(--text-xs);color:var(--color-warm-gray)}
+
+/* ── NEWSLETTER ── */
+.newsletter{background:var(--color-parchment);text-align:center}
+.newsletter .inner{max-width:520px;margin:0 auto}
+.newsletter h2{font-family:var(--font-heading);font-size:clamp(1.4rem,2.5vw,1.75rem);font-weight:700;margin-bottom:var(--space-4)}
+.newsletter p{color:var(--color-warm-gray);font-size:var(--text-sm);margin-bottom:var(--space-6)}
+.newsletter-form{display:flex;gap:var(--space-4);justify-content:center;flex-wrap:wrap}
+.newsletter-form input{padding:14px 18px;border:2px solid rgba(0,0,0,0.1);border-radius:var(--radius-md);font-family:var(--font-body);font-size:var(--text-sm);flex:1;min-width:240px;outline:none;transition:border-color .2s}
+.newsletter-form input:focus{border-color:var(--color-red)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+<div class="inner">
+  <div class="logo">Artispreneur <span>A</span><em>cademy</em></div>
+  <div class="links">
+    <a href="#courses">Courses</a>
+    <a href="#faq">FAQ</a>
+    <a href="#get-started" class="nav-cta">Start Free</a>
+  </div>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+<div class="inner">
+  <div class="eyebrow">FREE MUSIC BUSINESS COURSES</div>
+  <h1>Build Your Music <span>Business</span><br>Operating System.</h1>
+  <p>17 step-by-step video courses — branding, copyright, distribution, taxes, licensing, and everything else the music industry never taught you. 100% free.</p>
+  <div class="ctas">
+    <a href="#courses" class="btn btn--primary btn--lg">Browse Courses →</a>
+    <a href="#get-started" class="btn btn--secondary btn--lg">How It Works</a>
+  </div>
+</div>
+</section>
+
+<!-- PROBLEMS -->
+<section>
+<div class="inner">
+  <div class="eyebrow">THE PROBLEM</div>
+  <h2 class="section-title">You're a Great Artist.<br>The Business Side is the Hard Part.</h2>
+  <p class="section-sub">Nobody taught you how to file taxes, register a PRO, or license a song. That changes now.</p>
+  <div class="problems-grid">
+    <div class="prob-card">
+      <div class="num">01</div>
+      <h3>No Income</h3>
+      <p>Streaming but not earning. Nobody showed you how to actually monetize your craft.</p>
+    </div>
+    <div class="prob-card">
+      <div class="num">02</div>
+      <h3>Legal Blindness</h3>
+      <p>Copyright, trademarks, PROs, licenses — the legal maze keeps you from owning your work.</p>
+    </div>
+    <div class="prob-card">
+      <div class="num">03</div>
+      <h3>No Distribution</h3>
+      <p>Your music is finished but sitting on your hard drive. You don't know how to get it out there.</p>
+    </div>
+    <div class="prob-card">
+      <div class="num">04</div>
+      <h3>Business Chaos</h3>
+      <p>No LLC, no CRM, no bank account. Operating as a hobby when you should be running a business.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- STATS + COURSES -->
+<section id="courses" class="section--parchment">
+<div class="inner">
+  <div class="eyebrow">CURRICULUM</div>
+  <h2 class="section-title">The Complete Course Library</h2>
+  <p class="section-sub">17 courses — 120+ video modules. Every video is a step-by-step walkthrough. No fluff, no theory, just action. Free forever.</p>
+
+  <div class="stats-grid" id="statsGrid"></div>
+
+  <div class="alert">
+    <strong>🎵 Pro Tip:</strong> Register with a PRO before distributing your first release. Your royalties depend on it.
+  </div>
+
+  <div class="course-grid" id="courseList"></div>
+</div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="cta-banner" id="get-started">
+<div class="inner">
+  <div style="font-family:var(--font-heading);font-weight:700;font-size:var(--text-xs);color:var(--color-gold);text-transform:uppercase;letter-spacing:.12em;margin-bottom:var(--space-4)">ART MEANS BUSINESS</div>
+  <h2>Ready to Run Your Music<br>Like a Business?</h2>
+  <p>Join thousands of artists building their careers with Artispreneur. Start free — upgrade when you're ready.</p>
+  <a href="#" class="btn btn--gold btn--lg btn--pill" onclick="document.querySelector('.hero').scrollIntoView({behavior:'smooth'});return false">Get Started Free →</a>
+</div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section--parchment">
+<div class="inner">
+  <div class="eyebrow">LOVED BY ARTISTS</div>
+  <h2 class="section-title" style="text-align:center">What Artists Are Saying</h2>
+  <p class="section-sub" style="text-align:center;margin-left:auto;margin-right:auto">Real results from real musicians who leveled up their business.</p>
+  <div class="testimonials-grid">
+    <div class="t-card">
+      <div class="stars">★★★★★</div>
+      <blockquote>"I finally understand how to register my songs with a PRO. I've been leaving money on the table for years. This course library is a goldmine."</blockquote>
+      <div class="author">
+        <div class="avatar">MJ</div>
+        <div><div class="name">Marcus Jones</div><div class="role">Independent R&B Artist</div></div>
+      </div>
+    </div>
+    <div class="t-card">
+      <div class="stars">★★★★★</div>
+      <blockquote>"The branding course alone changed everything. I went from 'random musician on Instagram' to a consistent brand. My streams went up 40% in two months."</blockquote>
+      <div class="author">
+        <div class="avatar">SR</div>
+        <div><div class="name">Sasha Rivera</div><div class="role">Singer-Songwriter</div></div>
+      </div>
+    </div>
+    <div class="t-card">
+      <div class="stars">★★★★★</div>
+      <blockquote>"Setting up my LLC and business bank account used to feel impossible. The step-by-step videos made it so simple. I should've done this years ago."</blockquote>
+      <div class="author">
+        <div class="avatar">DT</div>
+        <div><div class="name">David Tran</div><div class="role">Producer & Beat Maker</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter">
+<div class="inner">
+  <div class="eyebrow">STAY IN THE LOOP</div>
+  <h2>Get New Courses & Music Business Tips</h2>
+  <p>Subscribe to our newsletter and never miss a new module, course drop, or free resource.</p>
+  <form class="newsletter-form" onsubmit="event.preventDefault();alert('Thanks! You\'re subscribed.')">
+    <input type="email" placeholder="you@email.com" required>
+    <button type="submit" class="btn btn--primary">Subscribe Free</button>
+  </form>
+</div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+<div class="inner">
+  <div class="eyebrow">FAQ</div>
+  <h2 class="section-title">Common Questions</h2>
+  <p class="section-sub">Everything you need to know about Artispreneur Academy.</p>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q">Is this really free? <span class="arrow">▼</span></div>
+      <div class="faq-a">Yes. Every course, every module, every video is completely free. No credit card required. No trial period. We believe every artist deserves access to this knowledge.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Who is this for? <span class="arrow">▼</span></div>
+      <div class="faq-a">Any musician or artist who wants to build a real business around their craft. Whether you're just starting out or you've been at it for years, these courses cover the business foundations the industry doesn't teach you.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">How are the courses delivered? <span class="arrow">▼</span></div>
+      <div class="faq-a">Every module is a high-quality video walkthrough hosted on HeyGen. You can watch on desktop, tablet, or phone. Each course breaks down into 5-8 focused modules you can complete in under 15 minutes.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">Do I keep access forever? <span class="arrow">▼</span></div>
+      <div class="faq-a">Yes. Once you have access, you keep it. We'll never paywall content that's already free. Future courses may also be added to the free library.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">I'm not based in the US — does this still apply? <span class="arrow">▼</span></div>
+      <div class="faq-a">While some topics (taxes, LLCs, EINs) focus on US systems, the principles of branding, networking, licensing, distribution, and building a music business apply globally.</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<div class="inner">
+  <div class="brand">
+    <span class="logo">Artispreneur <span>A</span><em>cademy</em></span>
+    <p>Free video courses for independent artists who are ready to take their careers seriously.</p>
+    <div class="tagline">Art Means Business.</div>
+  </div>
+  <div class="col">
+    <h4>Platform</h4>
+    <a href="#courses">Courses</a>
+    <a href="#">AI Agents</a>
+    <a href="#">Templates</a>
+    <a href="#">Marketplace</a>
+  </div>
+  <div class="col">
+    <h4>Resources</h4>
+    <a href="#">DIY Guides</a>
+    <a href="#">Community</a>
+    <a href="#faq">FAQ</a>
+  </div>
+  <div class="col">
+    <h4>Company</h4>
+    <a href="#">About</a>
+    <a href="#">Privacy</a>
+    <a href="#">Terms</a>
+  </div>
+</div>
+<div class="bottom">© 2026 Artispreneur. All rights reserved. Art Means Business.</div>
+</footer>
+
+<!-- VIDEO MODAL -->
+<div class="modal-overlay" id="videoModal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 id="modalTitle">Module</h4>
+      <button class="modal-close" id="modalClose">✕</button>
+    </div>
+    <div class="modal-body">
+      <iframe id="modalIframe" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>
+    </div>
+  </div>
+</div>
+
+<script>
+const courses = [
+  {title:"How to Brand Yourself as an Artist",modules:[
+    "Define Your Artistic Identity","Craft Your Visual Identity","Build Your Brand Story",
+    "Social Media Brand Strategy","Brand Consistency Across Platforms","Monetizing Your Brand","Brand Evolution & Growth"
+  ]},
+  {title:"How to Add Music to Collaborative Playlist",modules:[
+    "Understanding Collaborative Playlists","Finding the Right Playlists","Pitching Your Music Effectively",
+    "Building Relationships with Curators","Tracking Your Placements","Scaling Your Playlist Strategy","Playlist Promotion Techniques"
+  ]},
+  {title:"How to Add Songs to Your PRO",modules:[
+    "What is a PRO & Why It Matters","Choosing the Right PRO","Registering Your Catalog",
+    "Understanding Royalty Types","Tracking Your Royalties","Maximizing PRO Revenue","International Royalty Collection"
+  ]},
+  {title:"How to Promote Your Own Shows",modules:[
+    "Building Your Show Strategy","Venue Outreach & Booking","Marketing Your Event",
+    "Ticket Sales & Pricing","Day-of-Show Execution","Post-Show Follow Up","Turning Shows into Recurring Revenue"
+  ]},
+  {title:"How to Copyright Your Music",modules:[
+    "Copyright Basics for Musicians","What Can Be Copyrighted","The Registration Process",
+    "Copyright vs. Trademark vs. PRO","Protecting Your Work Online","Enforcing Your Copyright","International Copyright Protection"
+  ]},
+  {title:"How to Create a Music Catalogue",modules:[
+    "Why a Catalogue Matters","Organizing Your Releases","Metadata & ISRC Codes",
+    "Digital Asset Management","Catalogue Valuation","Selling Your Catalogue","Catalogue Growth Strategy","Legacy & Estate Planning"
+  ]},
+  {title:"How to Distribute Your Music",modules:[
+    "Choosing a Distributor","Preparing Your Release","Uploading & Metadata",
+    "Release Strategy & Timing","Pitching to Streaming Curators","Analytics & Performance Tracking","Multi-Platform Distribution"
+  ]},
+  {title:"How to File Business Taxes",modules:[
+    "Tax Basics for Musicians","Deductions You're Missing","Quarterly Estimated Taxes",
+    "Writing Off Equipment & Studio Time","1099s, W-2s & Self-Employment","Working with a CPA","Tax Planning for Growth","Audit-Proof Your Records"
+  ]},
+  {title:"How to Setup a Business Bank Account",modules:[
+    "Why You Need a Separate Account","Choosing the Right Bank","Documents You'll Need",
+    "Setting Up Online Banking","Managing Business Finances","Credit Cards & Business Credit","Scaling Your Financial Setup"
+  ]},
+  {title:"How to Setup an LLC",modules:[
+    "LLC vs. Sole Proprietorship","Choosing Your Business Name","Filing Your Articles of Organization",
+    "Operating Agreements","EIN Registration","State-Specific Requirements","Maintaining Your LLC"
+  ]},
+  {title:"How to Setup a CRM",modules:[
+    "Why Musicians Need a CRM","Choosing the Right CRM","Importing Your Contacts",
+    "Tracking Leads & Opportunities","Email & Follow-Up Automation","Pipeline Management","CRM Best Practices"
+  ]},
+  {title:"How to Submit Music to Blogs & Playlists",modules:[
+    "Building Your Press Kit","Finding the Right Blogs & Playlists","Crafting Your Pitch",
+    "Email Outreach That Works","Following Up Professionally","Tracking Submissions","Turning Press into Momentum","Building Long-Term Media Relationships"
+  ]},
+  {title:"How to License Your Music",modules:[
+    "Music Licensing 101","Types of Licenses Explained","Finding Licensing Opportunities",
+    "Pitching for TV, Film & Ads","Negotiating License Deals","Sync Licensing Platforms","Protecting Your Rights in Deals"
+  ]},
+  {title:"How to Register an E.I.N",modules:[
+    "What is an EIN & Why You Need One","Online Registration Walkthrough","EIN for Single-Member LLCs",
+    "Hiring Contractors & Employees","Using Your EIN for Banking & Taxes","EIN vs. SSN for Business","Common EIN Mistakes to Avoid"
+  ]},
+  {title:"How to Register with a P.R.O",modules:[
+    "Understanding Performance Rights","ASCAP vs. BMI vs. SESAC","Registration Step by Step",
+    "Registering Your Song Catalog","Understanding Royalty Statements","International Performance Rights","Maximizing PRO Payouts"
+  ]},
+  {title:"How to Network in the Music Industry",modules:[
+    "Networking vs. Nuisance","Building Your Network Strategy","Industry Events & Conferences",
+    "Online Networking Done Right","Follow-Up That Gets Replies","Finding Mentors & Collaborators","Turning Contacts into Opportunities","Long-Term Relationship Building"
+  ]},
+  {title:"How to Trademark Your Music",modules:[
+    "Trademark vs. Copyright","What Musicians Should Trademark","The Trademark Search Process",
+    "Filing Your Trademark Application","Responding to Office Actions","Enforcing Your Trademark","International Trademark Protection"
+  ]}
+];
+
+const videoLinks = (()=>{
+  const raw = [
+    {c:0,m:["https://app.heygen.com/videos/90b15e71558e49bca3cffc63ca7c9045","https://app.heygen.com/videos/21e75f2028ae40b4b57227b4bbd6a322","https://app.heygen.com/videos/573e9a742a8e42dfab408aaf0e52f497","https://app.heygen.com/videos/a5d0b8437e22496bb975a315489fe2d9","https://app.heygen.com/videos/9417072d9d4745b59e003438c05805cc","https://app.heygen.com/videos/131a8691f8f04d6abba7862882572835","https://app.heygen.com/videos/de71a1410a6b4d6596aac77797cb46c4"]},
+    {c:1,m:["https://app.heygen.com/videos/f7f14c9e94db41bfa3c86a4540a1a564","https://app.heygen.com/videos/8284638089e54421aa0af4547f2780b0","https://app.heygen.com/videos/8028586f08a74b9bae1eef5bb7fbdb3e","https://app.heygen.com/videos/40d55b9686b44631954cf2fc370bf522","https://app.heygen.com/videos/69f12bba9d534d10a24a17fcb7aef1d9","https://app.heygen.com/videos/23c18a1197614c309a88122b7bf25487","https://app.heygen.com/videos/081c9de0722d476faa610726c5aab712","https://app.heygen.com/videos/f1af35e7748c44dea26a1e77ffc850da","https://app.heygen.com/videos/865cdddcfc844d3f9bd414611721b70d","https://app.heygen.com/videos/d2c2c22cd5bb48bfacdab555e7658ab2","https://app.heygen.com/videos/d15d16186ae841b6a48cd8221358fc11","https://app.heygen.com/videos/92553aa498974515b7fdf0f079fc5168","https://app.heygen.com/videos/3b1481340da84a4191ccdd020b49fb01","https://app.heygen.com/videos/3b1481340da84a4191ccdd020b49fb01"]},
+    {c:2,m:["https://app.heygen.com/videos/d5b45853372a401191171c2366202100","https://app.heygen.com/videos/0f6f966328b342269c91781c9c14072d","https://app.heygen.com/videos/5451459bd69b46478dad2589938eba3f","https://app.heygen.com/videos/487e30dfbafa4e9996d8a81ad757fef2","https://app.heygen.com/videos/e9355b271add4cd9ab9b6acd7d07c2e0","https://app.heygen.com/videos/364e1b78812f4500be5652c572966f28","https://app.heygen.com/videos/6c4dc1812eeb4555bda7cc970d6353a2"]},
+    {c:3,m:["https://app.heygen.com/videos/d95ffa08965f4210bb0c989caa02457e","https://app.heygen.com/videos/a859f6ebac4a45b296eebb2f6cfe5247","https://app.heygen.com/videos/1822196e99cc4c70a90f41e41eba79e1","https://app.heygen.com/videos/940306e875d64b1fa9a701ddba3fe562","https://app.heygen.com/videos/e5b595ee405b405c9d261c5a28383570","https://app.heygen.com/videos/b709c1ea9196477bb901cedee29f4ce2","https://app.heygen.com/videos/1fe6e1e3ab734e17964e0557fa3eab11"]},
+    {c:4,m:["https://app.heygen.com/videos/b3377c3c5dd74a438145192f4521606d","https://app.heygen.com/videos/c2c1481b1ef749c4a5536f6d344c7fbf","https://app.heygen.com/videos/9f391cdfe50d4d8c9df78213da7b24ed","https://app.heygen.com/videos/a6c1bde65b244b2b994153c920f0fff8","https://app.heygen.com/videos/d9a4f2ecc7bc452f98545f6d3f045e60","https://app.heygen.com/videos/97f7f415da914abc8c6f34a260bf2ebf","https://app.heygen.com/videos/c1cc1fb90d234f4f9d1b24bc4a1dbc43"]},
+    {c:5,m:["https://app.heygen.com/videos/6ad54815906545978cbadf2923b6ce22","https://app.heygen.com/videos/ac39f3b35b6143e7a09d411bd34eb850","https://app.heygen.com/videos/ac39f3b35b6143e7a09d411bd34eb850","https://app.heygen.com/videos/ac39f3b35b6143e7a09d411bd34eb850","https://app.heygen.com/videos/45a0deaf143447ff8b5f125928586d29","https://app.heygen.com/videos/45a0deaf143447ff8b5f125928586d29","https://app.heygen.com/videos/f11334bad6ed4c3789f61f4643e49cdc","https://app.heygen.com/videos/5b9fbbcffbf846a7b11dd65a89f90de2"]},
+    {c:6,m:["https://app.heygen.com/videos/987d91f50d5244929557ef05ff811eed","https://app.heygen.com/videos/d81fb010aa2948e99123d19681029303","https://app.heygen.com/videos/3b04d15fea6641daadf9120c2bfa4631","https://app.heygen.com/videos/ae69a87a3aff448bbad8fd7fa8e14374","https://app.heygen.com/videos/36f97fa837c742ddb0bc342d581f6937","https://app.heygen.com/videos/4483d52145204fb7b12266e2c5da052e","https://app.heygen.com/videos/b0a4267f4cb6485bb5844ce960110104"]},
+    {c:7,m:["https://app.heygen.com/videos/b0a4267f4cb6485bb5844ce960110104","https://app.heygen.com/videos/28b5efe303db409080e945e38c7cc1da","https://app.heygen.com/videos/87eb2128b839417f9031108286f97593","https://app.heygen.com/videos/0519c29970be41b78e099346f900c4e7","https://app.heygen.com/videos/6aba4e77b9da419fbbeed7f370958aa8","https://app.heygen.com/videos/746fb50dd68e40a193a5be663a286bed","https://app.heygen.com/videos/6ab5bd6ad70541d88842d0d200a9f7db","https://app.heygen.com/videos/1153789e626842d389cdd63b24a96225"]},
+    {c:8,m:["https://app.heygen.com/videos/618e835aa9804e76a9f6695188782bf2","https://app.heygen.com/videos/15357cd42aa74cb0a3295afb9eb71406","https://app.heygen.com/videos/68bdfb318e244928852c1df7be9c952b","https://app.heygen.com/videos/68bdfb318e244928852c1df7be9c952b","https://app.heygen.com/videos/f0b40e348cd342548e4c192a9d8fe762","https://app.heygen.com/videos/1ef6a51bfb13456382c2f102d0df4c01","https://app.heygen.com/videos/7bb04d9e265b4b02ba1ba2fafcfa9099"]},
+    {c:9,m:["https://app.heygen.com/videos/68388c3b5fa4452cb270c3fd32b85eb7","https://app.heygen.com/videos/afd462790cff4c60ab82bbf84a502533","https://app.heygen.com/videos/3440043b07de4bf6a3fb88c30fb07703","https://app.heygen.com/videos/76221cb0bf3e45d88c8e8d1d2b5a525b","https://app.heygen.com/videos/76221cb0bf3e45d88c8e8d1d2b5a525b","https://app.heygen.com/videos/7df39e990eb84c90aead014d5dd13fd0","https://app.heygen.com/videos/1a09155063dc492cb2789faa63182a87"]},
+    {c:10,m:["https://app.heygen.com/videos/e51f3112287c488291cf5b2319c80853","https://app.heygen.com/videos/e51f3112287c488291cf5b2319c80853","https://app.heygen.com/videos/e51f3112287c488291cf5b2319c80853","https://app.heygen.com/videos/c36e73e93d6749c580a4e5d957e539d3","https://app.heygen.com/videos/889f90dd12d84755a0b9674fa3c603b8","https://app.heygen.com/videos/889f90dd12d84755a0b9674fa3c603b8","https://app.heygen.com/videos/d7b310c87f9d4bc0b9ba6bd1e739c8f4"]},
+    {c:11,m:["https://app.heygen.com/videos/7ffe76fd4eda4027917a89ccba81d83a","https://app.heygen.com/videos/33b97af46b244ee1b5eec9a0f5120940","https://app.heygen.com/videos/b007d342d228498eb8a8b5b08fcfc7b3","https://app.heygen.com/videos/a2688c303ad94eb6876d1d711b7b4eb3","https://app.heygen.com/videos/d9e081e5c8e846a495535c16c45b7333","https://app.heygen.com/videos/72765df9e87b47c6887aec1aaa7b305c","https://app.heygen.com/videos/72765df9e87b47c6887aec1aaa7b305c","https://app.heygen.com/videos/2f9eaf4e6a9b4773912a149297748092"]},
+    {c:12,m:["https://app.heygen.com/videos/2fc5984b3e6a42cfab1daf5920df4026","https://app.heygen.com/videos/142cb46197f94d9c92fa3b6fce9bc62e","https://app.heygen.com/videos/90ba544646694c4d8a814a3d727c4e02","https://app.heygen.com/videos/25c41ff989424714902ce67bcd818709","https://app.heygen.com/videos/8a83c7f033ea4a5882401eb486cd27b4","https://app.heygen.com/videos/641ef7dceb7544e9944369304b793982","https://app.heygen.com/videos/1bb053d6c8ef48f8a3ed0d8a13132031"]},
+    {c:13,m:["https://app.heygen.com/videos/d32d6fc07e214d228cc6341395813f2f","https://app.heygen.com/videos/be6dd5c944d1422f941326955aa7213c","https://app.heygen.com/videos/38d54975e96243a8b76e3026ee98b4ea","https://app.heygen.com/videos/a913bb5a97d14fd78e28c2d675edbd50","https://app.heygen.com/videos/5160fcf335a84fed8df1088198d2a582","https://app.heygen.com/videos/b274bd4004704419b9a67bdb37837269","https://app.heygen.com/videos/63cb9d29ed774b6bbe68719af5897255"]},
+    {c:14,m:["https://app.heygen.com/videos/ab0bec2342d3450184f893cb7c8061ea","https://app.heygen.com/videos/715f80cb747a47499fc3b1c3205dff8f","https://app.heygen.com/videos/5897865b81bd4caab388374c8ffb3125","https://app.heygen.com/videos/c8a68ddeb3bf49f799d553d2653a2981","https://app.heygen.com/videos/c268640f23674a94baba8bb5d444b540","https://app.heygen.com/videos/9237e8668e5d4c9b98091d1bc2c44755","https://app.heygen.com/videos/6480187eb1e1462c852c499aede246e0"]},
+    {c:15,m:["https://app.heygen.com/videos/f3c26bca96c448f588b0a71d6f9d856d","https://app.heygen.com/videos/90b05d1665024d75ab09f89c083b3ab5","https://app.heygen.com/videos/a5d2a2ef9cfd4ac880c7506eddb9ec54","https://app.heygen.com/videos/233f974e73c44f5b92cce74f41815a55","https://app.heygen.com/videos/c257923f448249df9dcce9dce5eae585","https://app.heygen.com/videos/191170b50db3485db3c6cfad398ab51d","https://app.heygen.com/videos/6d903b83c9df4c0f99f97e70a8fed0a7","https://app.heygen.com/videos/e5e9363a769e4d0a89f031a9c98ef6e4"]},
+    {c:16,m:["https://app.heygen.com/videos/65ec7ab8699a4d619c2ce0ab2ca0809b","https://app.heygen.com/videos/1feeee8f2fb4429ca3a600b09e31316d","https://app.heygen.com/videos/f657a50b636c4d0dbd51e6573b333a3f","https://app.heygen.com/videos/6b340ffdfcdc4217bc2f36c77c167924","https://app.heygen.com/videos/7813ac8cc0b244c1ad0bec4f73b794ab","https://app.heygen.com/videos/369411b2111b470aa78b13f7d80b3a91","https://app.heygen.com/videos/cdde9d24913646d18d3ac3bf1b10c315"]}
+  ];
+  const map={};raw.forEach(r=>{map[r.c]=r.m});return map;
+})();
+
+const courseList = document.getElementById('courseList');
+const statsGrid = document.getElementById('statsGrid');
+const modalOverlay = document.getElementById('videoModal');
+const modalIframe = document.getElementById('modalIframe');
+const modalTitle = document.getElementById('modalTitle');
+const modalClose = document.getElementById('modalClose');
+
+let totalModules = 0;
+courses.forEach((c,i)=>{const v=videoLinks[i]||[];totalModules+=v.length;});
+
+statsGrid.innerHTML = `
+  <div class="stat-card"><div class="num">${courses.length}</div><div class="label">Courses</div></div>
+  <div class="stat-card"><div class="num">${totalModules}+</div><div class="label">Video Modules</div></div>
+  <div class="stat-card"><div class="num">100%</div><div class="label">Free Forever</div></div>
+  <div class="stat-card"><div class="num">15</div><div class="label">Min Per Module</div></div>
+`;
+
+courses.forEach((course, ci) => {
+  const card = document.createElement('div');
+  card.className = 'course-card';
+  const modules = videoLinks[ci] || [];
+  const modCount = modules.length;
+  const header = document.createElement('div');
+  header.className = 'course-card-header';
+  header.innerHTML = `<h3>${course.title}</h3><span class="mod-count">${modCount} videos</span><span class="arrow">▼</span>`;
+  const body = document.createElement('div');
+  body.className = 'course-body';
+  const list = document.createElement('div');
+  list.className = 'module-list';
+  course.modules.forEach((modTitle, mi) => {
+    const link = modules[mi];
+    const item = document.createElement('a');
+    item.className = 'module-item';
+    if (link) {
+      item.href = '#';
+      item.addEventListener('click', (e) => {
+        e.preventDefault();
+        openModal(course.title, modTitle, link);
+      });
+    }
+    item.innerHTML = `<span class="mod-num">${String(mi+1).padStart(2,'0')}</span><span class="mod-title">${modTitle}</span><span class="play">▶</span>`;
+    list.appendChild(item);
+  });
+  body.appendChild(list);
+  card.appendChild(header);
+  card.appendChild(body);
+  courseList.appendChild(card);
+  header.addEventListener('click', () => { card.classList.toggle('open'); });
+});
+
+function openModal(courseTitle, modTitle, url) {
+  modalTitle.textContent = `${courseTitle} — ${modTitle}`;
+  modalIframe.src = url;
+  modalOverlay.classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  modalOverlay.classList.remove('show');
+  modalIframe.src = '';
+  document.body.style.overflow = '';
+}
+modalClose.addEventListener('click', closeModal);
+modalOverlay.addEventListener('click', (e) => { if(e.target===modalOverlay) closeModal(); });
+document.addEventListener('keydown', (e) => { if(e.key==='Escape') closeModal(); });
+
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => { q.parentElement.classList.toggle('open'); });
+});
+</script>
+</body>
+</html>
